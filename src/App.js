@@ -13,7 +13,7 @@ function App() {
             const startingLocation = endPoints[0];
             console.log("here: ",endPoints[0]);
             const endingLocation = endPoints[1];
-            const apiKey = 'AIzaSyDNX6uzSj0VM-gNy6vLh7xEJfzOLM1vrok';
+            const apiKey = '';
             const url = `https://maps.googleapis.com/maps/api/directions/json?&key=${apiKey}&origin=${startingLocation}&destination=${endingLocation}`
 
             let resp = await fetch(`${proxy_url}${url}`);
@@ -29,9 +29,6 @@ function App() {
       console.log("handleSubmit from App: ",start, end,endPoints);
     setEndPoints([...endPoints, start, end]);
   };
-
-
-
 
     return (
         <div className="App">
