@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './styles.css';
 import StartingLocationForm from "./Components/StartingLocationForm";
+import Header from "./Components/header";
 
 function App() {
   const [endPoints, setEndPoints] = useState([]);
@@ -32,6 +33,7 @@ function App() {
 
     return (
         <div className="App">
+            <Header/>
             <StartingLocationForm
                 setEndPoints={setEndPoints}
                 handleSubmit={handleSubmit}
