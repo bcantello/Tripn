@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import './styles.css';
-import StartingLocationForm from "./Components/StartingLocationForm";
+import StartingLocationsForm from "./Components/StartingLocationsForm";
 import Header from "./Components/header";
+import Waypoints from "./Components/Waypoints/Waypoints";
+import WaypointList from "./Components/Waypoints/WaypointList";
 
 function App() {
-  const [endPoints, setEndPoints] = useState([]);
-  console.log('App - endPoints', endPoints);
+    const [endPoints, setEndPoints] = useState([]);
+    console.log('App - endPoints', endPoints);
     const [directions, setDirections] = useState({});
+    const [waypointsArr, setWaypointsArr] = useState([]);
 
     useEffect(() => {
         const fetchDirections = async () => {
@@ -26,17 +29,36 @@ function App() {
     }, [endPoints]);
     console.log('what is directions? ', directions);
 
-  const handleSubmit = (start, end) => {
-      console.log("handleSubmit from App: ",start, end,endPoints);
-    setEndPoints([...endPoints, start, end]);
-  };
+    const handleEndpointsSubmit = (start, end) => {
+        console.log("handleSubmit from App: ",start, end,endPoints);
+        setEndPoints([...endPoints, start, end]);
+    };
+
+    const handleWaypointsSubmit = (waypoint) => {
+        console.log("handleSubmit from App: ",waypoint, waypointsArr);
+        setWaypointsArr([...waypointsArr, waypoint]);
+    };
+
+    const deleteDestination = i => {
+        let newWaypoints = [...waypointsArr];
+        newWaypoints.splice(i, 1);
+        setWaypointsArr(newWaypoints);
+    };
 
     return (
         <div className="App">
             <Header/>
-            <StartingLocationForm
+            <StartingLocationsForm
                 setEndPoints={setEndPoints}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleEndpointsSubmit}
+            />
+            <Waypoints
+                handleWaypointsSubmit={handleWaypointsSubmit}
+                setWaypointsArr={setWaypointsArr}
+            />
+            <WaypointList
+                deleteDestination={deleteDestination}
+                waypointsArr={waypointsArr}
             />
         </div>
     );
