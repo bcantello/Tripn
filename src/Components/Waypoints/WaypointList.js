@@ -2,10 +2,10 @@ import React from "react";
 import WaypointListItem from "./WaypointListItem";
 
 function WaypointList(props) {
-    const waypointListArr = props.waypointsArr.map((todo, index) => {
+    const waypointListArr = props.waypointsArr.map((waypoint, index) => {
         return (
             <WaypointListItem
-                todo={todo}
+                waypoint={waypoint}
                 key={index}
                 index={index}
                 deleteDestination={props.deleteDestination}

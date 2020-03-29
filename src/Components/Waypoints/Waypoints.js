@@ -7,10 +7,13 @@ function Waypoints(props) {
         const userInput = e.target.value;
         setInput(userInput);
     };
+
     const handleSubmit = e => {
         e.preventDefault();
         props.handleWaypointsSubmit(input);
+        setInput("");
     };
+
     return (
         <div className="create-new">
             <form onSubmit={handleSubmit}>

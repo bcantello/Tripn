@@ -7,20 +7,19 @@ import WaypointList from "./Components/Waypoints/WaypointList";
 
 function App() {
     const [endPoints, setEndPoints] = useState([]);
-    console.log('App - endPoints', endPoints);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
+    console.log("waypoints array: ", waypointsArr);
 
     useEffect(() => {
         const fetchDirections = async () => {
-            let proxy_url = 'https://cors-anywhere.herokuapp.com/';
-            const startingLocation = endPoints[0];
-            console.log("here: ",endPoints[0]);
-            const endingLocation = endPoints[1];
-            const apiKey = '';
-            const url = `https://maps.googleapis.com/maps/api/directions/json?&key=${apiKey}&origin=${startingLocation}&destination=${endingLocation}`
+            let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const startingLocation = `&origin=${endPoints[0]}`;
+            const endingLocation = `&destination=${endPoints[1]}`;
+            const apiKey = '&key=';
+            const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
-            let resp = await fetch(`${proxy_url}${url}`);
+            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}`);
             let respJson = await resp.json();
             console.log('fetchDirections-return: ', respJson);
             setDirections(respJson)
@@ -30,7 +29,6 @@ function App() {
     console.log('what is directions? ', directions);
 
     const handleEndpointsSubmit = (start, end) => {
-        console.log("handleSubmit from App: ",start, end,endPoints);
         setEndPoints([...endPoints, start, end]);
     };
 
@@ -52,14 +50,17 @@ function App() {
                 setEndPoints={setEndPoints}
                 handleSubmit={handleEndpointsSubmit}
             />
-            <Waypoints
-                handleWaypointsSubmit={handleWaypointsSubmit}
-                setWaypointsArr={setWaypointsArr}
-            />
-            <WaypointList
-                deleteDestination={deleteDestination}
-                waypointsArr={waypointsArr}
-            />
+            <div>
+                <Waypoints
+                    handleWaypointsSubmit={handleWaypointsSubmit}
+                    setWaypointsArr={setWaypointsArr}
+                />
+                <WaypointList
+                    deleteDestination={deleteDestination}
+                    waypointsArr={waypointsArr}
+                />
+                <button>Finalize Trip</button>
+            </div>
         </div>
     );
 }

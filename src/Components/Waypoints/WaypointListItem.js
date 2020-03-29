@@ -1,14 +1,14 @@
 import React from "react";
 
-function WaypointListItem({ todo, index, deleteDestination }) {
+function WaypointListItem({ waypoint, index, deleteDestination }) {
     return (
-        <div className="to-do-item">
+        <div className="waypoint-item">
       <span className="name">
-        <span>{todo}</span>
+        <span>{waypoint}</span>
       </span>
             <span className="actions">
         <span>
-          <button onClick={() => deleteDestination(index)}>Delete</button>
+          <button onClick={ () => deleteDestination(index) }>Delete</button>
         </span>
       </span>
         </div>
