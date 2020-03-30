@@ -1,43 +1,71 @@
 import React, {useEffect, useState} from 'react';
 import './styles.css';
-import StartingLocationForm from "./Components/StartingLocationForm";
+import StartingLocationsForm from "./Components/StartingLocationsForm";
 import Header from "./Components/header";
+import Waypoints from "./Components/Waypoints/Waypoints";
+import WaypointList from "./Components/Waypoints/WaypointList";
 
 function App() {
-  const [endPoints, setEndPoints] = useState([]);
-  console.log('App - endPoints', endPoints);
+    const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
+    const [waypointsArr, setWaypointsArr] = useState([]);
+    console.log("waypoints array: ", waypointsArr);
 
     useEffect(() => {
         const fetchDirections = async () => {
-            let proxy_url = 'https://cors-anywhere.herokuapp.com/';
-            const startingLocation = endPoints[0];
-            console.log("here: ",endPoints[0]);
-            const endingLocation = endPoints[1];
-            const apiKey = '';
-            const url = `https://maps.googleapis.com/maps/api/directions/json?&key=${apiKey}&origin=${startingLocation}&destination=${endingLocation}`
+            let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const startingLocation = `&origin=${endPoints[0]}`;
+            const endingLocation = `&destination=${endPoints[1]}`;
+            const apiKey = '&key=';
+            const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
-            let resp = await fetch(`${proxy_url}${url}`);
+            const waypointArr = waypointsArr.map( waypoint => {
+                return ( waypoint=`via:${waypoint}|` );
+            });
+            const waypoints = `&waypoints=${waypointArr.join('')}`;
+
+            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
             let respJson = await resp.json();
             console.log('fetchDirections-return: ', respJson);
             setDirections(respJson)
         };
         fetchDirections();
-    }, [endPoints]);
+    }, [endPoints, waypointsArr]);
     console.log('what is directions? ', directions);
 
-  const handleSubmit = (start, end) => {
-      console.log("handleSubmit from App: ",start, end,endPoints);
-    setEndPoints([...endPoints, start, end]);
-  };
+    const handleEndpointsSubmit = (start, end) => {
+        setEndPoints([...endPoints, start, end]);
+    };
+
+    const handleWaypointsSubmit = (waypoint) => {
+        console.log("handleSubmit from App: ",waypoint, waypointsArr);
+        setWaypointsArr([...waypointsArr, waypoint]);
+    };
+
+    const deleteDestination = i => {
+        let newWaypoints = [...waypointsArr];
+        newWaypoints.splice(i, 1);
+        setWaypointsArr(newWaypoints);
+    };
 
     return (
         <div className="App">
             <Header/>
-            <StartingLocationForm
+            <StartingLocationsForm
                 setEndPoints={setEndPoints}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleEndpointsSubmit}
             />
+            <div>
+                <Waypoints
+                    handleWaypointsSubmit={handleWaypointsSubmit}
+                    setWaypointsArr={setWaypointsArr}
+                />
+                <WaypointList
+                    deleteDestination={deleteDestination}
+                    waypointsArr={waypointsArr}
+                />
+                <button>Finalize Trip</button>
+            </div>
         </div>
     );
 }

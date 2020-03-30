@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 
-function StartingLocationForm(props) {
+function StartingLocationsForm(props) {
     const [startingLocation, setStartingLocation] = useState('');
     const [endingLocation, setEndingLocation] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
         props.handleSubmit(startingLocation, endingLocation);
-        // props.handleSubmit(endingLocation);
         setStartingLocation("");
         setEndingLocation('');
     };
@@ -47,4 +46,4 @@ function StartingLocationForm(props) {
     );
 }
 
-export default StartingLocationForm;
+export default StartingLocationsForm;
