@@ -25,9 +25,15 @@ function App() {
             const waypoints = `&waypoints=${waypointArr.join('')}`;
 
             let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
-            let respJson = await resp.json();
-            console.log('fetchDirections-return: ', respJson);
-            setDirections(respJson)
+            let restext = await resp.text();
+            try {
+                let resJson = JSON.parse(restext);
+                console.log('fetchDirections-return: ', resJson);
+                setDirections(resJson)
+            } catch (e) {
+                alert(`The application has encountered the following error: ${e}
+                Please close and restart the application.`)
+            }
         };
         fetchDirections();
     }, [endPoints, waypointsArr]);
