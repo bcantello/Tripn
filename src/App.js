@@ -19,13 +19,18 @@ function App() {
             const apiKey = '&key=';
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
-            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}`);
+            const waypointArr = waypointsArr.map( waypoint => {
+                return ( waypoint=`via:${waypoint}|` );
+            });
+            const waypoints = `&waypoints=${waypointArr.join('')}`;
+
+            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
             let respJson = await resp.json();
             console.log('fetchDirections-return: ', respJson);
             setDirections(respJson)
         };
         fetchDirections();
-    }, [endPoints]);
+    }, [endPoints, waypointsArr]);
     console.log('what is directions? ', directions);
 
     const handleEndpointsSubmit = (start, end) => {

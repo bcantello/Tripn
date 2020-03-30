@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("https://res.cloudinary.com/bcantello/image/upload/v1585530035/the-background-4706293_j9mtag.jpg");
+  background-size: cover;
+  height: 100vh;
 }
 
 .App-header {
