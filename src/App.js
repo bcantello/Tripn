@@ -4,6 +4,7 @@ import StartingLocationsForm from "./Components/StartingLocationsForm";
 import Header from "./Components/header";
 import Waypoints from "./Components/Waypoints/Waypoints";
 import WaypointList from "./Components/Waypoints/WaypointList";
+import DirectionsList from "./Components/Directions/DirectionsList";
 
 function App() {
     const [endPoints, setEndPoints] = useState([]);
@@ -16,7 +17,7 @@ function App() {
             let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = '&key=';
+            const apiKey = '&key=AIzaSyDVNI4BRuk422vOuCYywrjU_21qqWngcsQ';
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
@@ -54,6 +55,9 @@ function App() {
         setWaypointsArr(newWaypoints);
     };
 
+    console.log("WHAT THE HELL: ", Object.getOwnPropertyNames(directions).sort());
+    console.log(directions['routes']);
+
     return (
         <div className="App">
             <Header/>
@@ -72,6 +76,7 @@ function App() {
                 />
                 <button>Finalize Trip</button>
             </div>
+            <DirectionsList directions={directions}/>
         </div>
     );
 }
