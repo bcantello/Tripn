@@ -12,7 +12,7 @@ function WaypointList(props) {
             />
         );
     });
-    return <div className="items-list">{waypointListArr}</div>;
+    return <div className="waypoints-list">{waypointListArr}</div>;
 }
 
 export default WaypointList;

@@ -4,6 +4,7 @@ import StartingLocationsForm from "./Components/StartingLocationsForm";
 import Header from "./Components/header";
 import Waypoints from "./Components/Waypoints/Waypoints";
 import WaypointList from "./Components/Waypoints/WaypointList";
+import DirectionsList from "./Components/Directions/DirectionsList";
 
 function App() {
     const [endPoints, setEndPoints] = useState([]);
@@ -54,6 +55,9 @@ function App() {
         setWaypointsArr(newWaypoints);
     };
 
+    console.log("WHAT THE HELL: ", Object.getOwnPropertyNames(directions).sort());
+    console.log(directions['routes']);
+
     return (
         <div className="App">
             <Header/>
@@ -72,6 +76,7 @@ function App() {
                 />
                 <button>Finalize Trip</button>
             </div>
+            <DirectionsList directions={directions}/>
         </div>
     );
 }
