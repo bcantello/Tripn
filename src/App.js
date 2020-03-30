@@ -17,7 +17,7 @@ function App() {
             let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = '&key=AIzaSyDVNI4BRuk422vOuCYywrjU_21qqWngcsQ';
+            const apiKey = '&key=';
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
