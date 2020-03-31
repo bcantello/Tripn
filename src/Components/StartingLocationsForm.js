@@ -25,21 +25,21 @@ function StartingLocationsForm(props) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id={'starting-locations-form'}>
             <div>
-                <label htmlFor="Starting-Location">Starting Location</label>
                 <input
                     id="starting-location"
                     type="text"
+                    placeholder={'Starting Location'}
                     value={startingLocation}
                     onChange={handleStartingChange}
                 />
             </div>
             <div>
-                <label htmlFor="Ending-Location">Ending Location</label>
                 <input
                     id="ending-location"
                     type="text"
+                    placeholder={'Ending Location'}
                     value={endingLocation}
                     onChange={handleEndingChange}
                 />

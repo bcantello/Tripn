@@ -3,6 +3,8 @@ import './styles.css';
 import Header from "./Components/header";
 import Main from "./Components/Main";
 
+require('dotenv').config();
+
 function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
@@ -16,7 +18,8 @@ function App() {
             let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = `&key=`;
+            const apiKey = `&key=${process.env.REACT_APP_TRIPN_GMAPS_API_KEY}`;
+            console.log(apiKey);
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
@@ -25,6 +28,7 @@ function App() {
             const waypoints = `&waypoints=${waypointArr.join('')}`;
 
             let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
+            // let resp = await fetch(`${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
             let restext = await resp.text();
             try {
                 let resJson = JSON.parse(restext);

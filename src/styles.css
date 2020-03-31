@@ -19,9 +19,18 @@ nav {
   display: flex;
   justify-content: center;
   margin-bottom: 2em;
-  text-decoration: none;
 }
 nav div {
   padding: 1.5em;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  color: black;
+  font-family: 'Indie Flower', cursive;
+}
+
+#logo {
+  font-weight: bold;
+}
+
+#starting-locations-form {
+  padding-top: 5em;
 }

@@ -5,13 +5,13 @@ import '../styles.css'
 export default function Header() {
     return(
         <nav>
-            <Link to={'/'}>
-                <div>Tripn</div>
+            <Link to={'/'} style={{textDecoration: 'none'}}>
+                <div><span id={'logo'}>Tripn</span></div>
             </Link>
-            <Link to={'/'}>
+            <Link to={'/'} style={{textDecoration: 'none'}}>
                 <div>Home</div>
             </Link>
-            <Link to={'/about'}>
+            <Link to={'/about'} style={{textDecoration: 'none'}}>
                 <div>About</div>
             </Link>
         </nav>

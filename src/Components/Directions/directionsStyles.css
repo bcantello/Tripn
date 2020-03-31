@@ -1,4 +1,11 @@
 .directions-item {
-    background-color: rgba(187, 187, 187, 0.78);
-    padding: .25em 0;
+    background-color: rgba(203, 203, 203, 0.78);
+    padding: .45em 0;
+}
+.directions-list {
+    overflow: scroll;
+    height: 70vh;
+    width: 95vw;
+    margin: 0 auto;
+    border-radius: 10px;
 }
