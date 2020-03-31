@@ -7,6 +7,9 @@ function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
+    console.log('endpoints from App: ',endPoints);
+    console.log('directions from App: ',directions);
+    console.log('waypointsArr from App: ',waypointsArr);
 
     useEffect(() => {
         const fetchDirections = async () => {
@@ -33,13 +36,16 @@ function App() {
         };
         fetchDirections();
     }, [endPoints, waypointsArr]);
+    console.log('fetchdirections() from App: ',directions);
 
     const handleEndpointsSubmit = (start, end) => {
         setEndPoints([...endPoints, start, end]);
+        console.log('handleEndpointSubmit() from App: ',endPoints);
     };
 
     const handleWaypointsSubmit = (waypoint) => {
         setWaypointsArr([...waypointsArr, waypoint]);
+        console.log('handleWaypointsSubmit() from App: ',waypointsArr);
     };
 
     const deleteDestination = i => {

@@ -1,16 +1,17 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import WaypointsUI from "./Waypoints/WaypointsUI";
+import {Redirect, withRouter} from "react-router-dom";
 
 function StartingLocationsForm(props) {
     const [startingLocation, setStartingLocation] = useState('');
     const [endingLocation, setEndingLocation] = useState('');
+    const [waypointRoute, setWaypointRoute] = useState('/');
 
     const handleSubmit = e => {
         e.preventDefault();
         props.handleSubmit(startingLocation, endingLocation);
         setStartingLocation("");
         setEndingLocation('');
+        setWaypointRoute('/waypoints');
     };
 
     const handleStartingChange = e => {
@@ -43,11 +44,10 @@ function StartingLocationsForm(props) {
                     onChange={handleEndingChange}
                 />
             </div>
-            <Link to={'/waypoints'}>
-                <input type="submit" value="Set Starting Location"/>
-            </Link>
+            <input type="submit" value="Set Starting Location"/>
+            <Redirect to={`${waypointRoute}`} />
         </form>
     );
 }
 
-export default StartingLocationsForm;
+export default withRouter(StartingLocationsForm);
