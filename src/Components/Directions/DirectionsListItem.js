@@ -1,7 +1,7 @@
 import React from "react";
+import './directionsStyles.css';
 
 export default function DirectionsListItem(props) {
-    console.log("THis is the shit!!!!!!!!!! ", props);
     //Below html stripping function from Sabaz on stackOverflow
     function strip(html){
         let doc = new DOMParser().parseFromString(html, 'text/html');

@@ -1,23 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, createContext} from 'react';
 import './styles.css';
-import StartingLocationsForm from "./Components/StartingLocationsForm";
 import Header from "./Components/header";
-import Waypoints from "./Components/Waypoints/Waypoints";
-import WaypointList from "./Components/Waypoints/WaypointList";
-import DirectionsList from "./Components/Directions/DirectionsList";
+import Main from "./Components/Main";
 
 function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
-    console.log("waypoints array: ", waypointsArr);
+    console.log('endpoints from App: ',endPoints);
+    console.log('directions from App: ',directions);
+    console.log('waypointsArr from App: ',waypointsArr);
 
     useEffect(() => {
         const fetchDirections = async () => {
             let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = '&key=';
+            const apiKey = `&key=AIzaSyDI9xPzHZ2CJU4qtow3dAY35UQHcei--CI`;
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
@@ -29,7 +28,6 @@ function App() {
             let restext = await resp.text();
             try {
                 let resJson = JSON.parse(restext);
-                console.log('fetchDirections-return: ', resJson);
                 setDirections(resJson)
             } catch (e) {
                 alert(`The application has encountered the following error: ${e}
@@ -38,15 +36,16 @@ function App() {
         };
         fetchDirections();
     }, [endPoints, waypointsArr]);
-    console.log('what is directions? ', directions);
+    console.log('fetchdirections() from App: ',directions);
 
     const handleEndpointsSubmit = (start, end) => {
         setEndPoints([...endPoints, start, end]);
+        console.log('handleEndpointSubmit() from App: ',endPoints);
     };
 
     const handleWaypointsSubmit = (waypoint) => {
-        console.log("handleSubmit from App: ",waypoint, waypointsArr);
         setWaypointsArr([...waypointsArr, waypoint]);
+        console.log('handleWaypointsSubmit() from App: ',waypointsArr);
     };
 
     const deleteDestination = i => {
@@ -55,30 +54,29 @@ function App() {
         setWaypointsArr(newWaypoints);
     };
 
-    console.log("WHAT THE HELL: ", Object.getOwnPropertyNames(directions).sort());
-    console.log(directions['routes']);
-
     return (
         <div className="App">
             <Header/>
-            <StartingLocationsForm
-                setEndPoints={setEndPoints}
-                handleSubmit={handleEndpointsSubmit}
-            />
-            <div>
-                <Waypoints
-                    handleWaypointsSubmit={handleWaypointsSubmit}
-                    setWaypointsArr={setWaypointsArr}
-                />
-                <WaypointList
-                    deleteDestination={deleteDestination}
-                    waypointsArr={waypointsArr}
-                />
-                <button>Finalize Trip</button>
+            <div id={'main-content-container'}>
+                <UniversalProps.Provider value={
+                    {
+                    endPoints,
+                    setEndPoints,
+                    directions,
+                    setDirections,
+                    waypointsArr,
+                    setWaypointsArr,
+                    handleEndpointsSubmit,
+                    handleWaypointsSubmit,
+                    deleteDestination
+                    }
+                }>
+                    <Main/>
+                </UniversalProps.Provider>
             </div>
-            <DirectionsList directions={directions}/>
         </div>
     );
 }
 
 export default App;
+export const UniversalProps = createContext();
