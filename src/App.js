@@ -1,7 +1,6 @@
 import React, {useEffect, useState, createContext} from 'react';
 import './styles.css';
 import Header from "./Components/header";
-import DirectionsList from "./Components/Directions/DirectionsList";
 import Main from "./Components/Main";
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
             let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = '&key=AIzaSyC4m7QFElGVPOhdc7SSKZpcHKHAPqk9c70';
+            const apiKey = `&key=AIzaSyDI9xPzHZ2CJU4qtow3dAY35UQHcei--CI`;
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
@@ -69,7 +68,6 @@ function App() {
                     <Main/>
                 </UniversalProps.Provider>
             </div>
-            <DirectionsList directions={directions}/>
         </div>
     );
 }

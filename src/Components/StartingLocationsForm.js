@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
+import WaypointsUI from "./Waypoints/WaypointsUI";
 
 function StartingLocationsForm(props) {
     const [startingLocation, setStartingLocation] = useState('');
@@ -41,7 +43,9 @@ function StartingLocationsForm(props) {
                     onChange={handleEndingChange}
                 />
             </div>
-            <input type="submit" value="Set Starting Location"/>
+            <Link to={'/waypoints'}>
+                <input type="submit" value="Set Starting Location"/>
+            </Link>
         </form>
     );
 }
