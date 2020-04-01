@@ -5,6 +5,9 @@ import {UniversalProps} from "../../App";
 export default function Directions() {
     const universalProps = useContext(UniversalProps);
     return(
-        <DirectionsList directions={universalProps.directions}/>
+        <div>
+            <DirectionsList directions={universalProps.directions}/>
+        </div>
+
     )
 }

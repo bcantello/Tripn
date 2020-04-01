@@ -3,11 +3,13 @@ import {Link} from "react-router-dom";
 import Waypoints from "./Waypoints";
 import WaypointList from "./WaypointList";
 import {UniversalProps} from "../../App";
+import Map from "../Map";
 
 export default function WaypointsUI() {
     const universalProps = useContext(UniversalProps);
     return(
         <div>
+            <Map/>
             <Waypoints
                 handleWaypointsSubmit={universalProps.handleWaypointsSubmit}
                 setWaypointsArr={universalProps.setWaypointsArr}

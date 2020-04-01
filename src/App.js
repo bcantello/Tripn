@@ -13,25 +13,25 @@ function App() {
     console.log('directions from App: ',directions);
     console.log('waypointsArr from App: ',waypointsArr);
 
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const startingLocation = `&origin=${endPoints[0]}`;
+    const endingLocation = `&destination=${endPoints[1]}`;
+    const apiKey = `&key=${process.env.REACT_APP_TRIPN_GMAPS_API_KEY}`;
+    console.log(apiKey);
+    const url = 'https://maps.googleapis.com/maps/api/directions/json?';
+
+    const waypointArr = waypointsArr.map( waypoint => {
+        return ( waypoint=`via:${waypoint}|` );
+    });
+    const waypoints = `&waypoints=${waypointArr.join('')}`;
+    const apiUrl = `${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`;
+
     useEffect(() => {
         const fetchDirections = async () => {
-            let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-            const startingLocation = `&origin=${endPoints[0]}`;
-            const endingLocation = `&destination=${endPoints[1]}`;
-            const apiKey = `&key=${process.env.REACT_APP_TRIPN_GMAPS_API_KEY}`;
-            console.log(apiKey);
-            const url = 'https://maps.googleapis.com/maps/api/directions/json?';
-
-            const waypointArr = waypointsArr.map( waypoint => {
-                return ( waypoint=`via:${waypoint}|` );
-            });
-            const waypoints = `&waypoints=${waypointArr.join('')}`;
-
-            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
-            // let resp = await fetch(`${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
-            let restext = await resp.text();
+            let resp = await fetch(`${apiUrl}`);
+            let resText = await resp.text();
             try {
-                let resJson = JSON.parse(restext);
+                let resJson = JSON.parse(resText);
                 setDirections(resJson)
             } catch (e) {
                 alert(`The application has encountered the following error: ${e}
@@ -39,7 +39,7 @@ function App() {
             }
         };
         fetchDirections();
-    }, [endPoints, waypointsArr]);
+    }, [endPoints, waypointsArr, apiUrl]);
     console.log('fetchdirections() from App: ',directions);
 
     const handleEndpointsSubmit = (start, end) => {
@@ -70,6 +70,8 @@ function App() {
                     setDirections,
                     waypointsArr,
                     setWaypointsArr,
+                    apiKey,
+                    waypoints,
                     handleEndpointsSubmit,
                     handleWaypointsSubmit,
                     deleteDestination

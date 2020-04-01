@@ -18,7 +18,6 @@
 nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 2em;
 }
 nav div {
   padding: 1.5em;
@@ -33,4 +32,8 @@ nav div {
 
 #starting-locations-form {
   padding-top: 5em;
+}
+
+iframe {
+  width: 80vw; height: 60vw;
 }
