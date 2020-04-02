@@ -24,6 +24,7 @@ function App() {
             const waypoints = `&waypoints=optimize:true|${waypointArr.join('')}`;
 
             let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}${apiKey}`);
+            // let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}`);
             let restext = await resp.text();
             try {
                 let resJson = JSON.parse(restext);

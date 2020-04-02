@@ -26,25 +26,27 @@ function StartingLocationsForm(props) {
 
     return (
         <form onSubmit={handleSubmit} id={'starting-locations-form'}>
-            <div>
-                <input
-                    id="starting-location"
-                    type="text"
-                    placeholder={'Starting Location'}
-                    value={startingLocation}
-                    onChange={handleStartingChange}
-                />
+            <div id={'starting-locations-container'}>
+                <div>
+                    <input
+                        className="starting-location-field"
+                        type="text"
+                        placeholder={'Starting Location'}
+                        value={startingLocation}
+                        onChange={handleStartingChange}
+                    />
+                </div>
+                <div>
+                    <input
+                        className="starting-location-field"
+                        type="text"
+                        placeholder={'Ending Location'}
+                        value={endingLocation}
+                        onChange={handleEndingChange}
+                    />
+                </div>
             </div>
-            <div>
-                <input
-                    id="ending-location"
-                    type="text"
-                    placeholder={'Ending Location'}
-                    value={endingLocation}
-                    onChange={handleEndingChange}
-                />
-            </div>
-            <input type="submit" value="Set Starting Location"/>
+            <input className={'starting-submit-button'} type="submit" value="Start Tripn!"/>
             <Redirect to={`${waypointRoute}`} />
         </form>
     );

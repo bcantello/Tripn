@@ -1,5 +1,6 @@
 import React from "react";
 import WaypointListItem from "./WaypointListItem";
+import './waypointStyles.css'
 
 function WaypointList(props) {
     const waypointListArr = props.waypointsArr.map((waypoint, index) => {
