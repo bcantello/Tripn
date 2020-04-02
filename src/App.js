@@ -23,12 +23,12 @@ function App() {
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
-                return ( waypoint=`via:${waypoint}|` );
+                return ( waypoint=`|${waypoint}` );
             });
-            const waypoints = `&waypoints=${waypointArr.join('')}`;
+            const waypoints = `&waypoints=optimize:true|${waypointArr.join('')}`;
+            console.log("WHAT ARE WAYPOINTS? ", waypoints);
 
-            let resp = await fetch(`${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
-            // let resp = await fetch(`${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`);
+            let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}${apiKey}`);
             let restext = await resp.text();
             try {
                 let resJson = JSON.parse(restext);
