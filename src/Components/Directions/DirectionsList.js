@@ -17,9 +17,12 @@ export default function DirectionsList({directions}) {
                     <DirectionsListItem element={e} key={index}/>
                 );
             });
-        // } else {
-        //    const container = document.getElementById('directions-list-container');
-        //    container.appendChild(<div>Looks like you're done Tripn!</div>)
+        } else {
+           const container = document.getElementById('directions-list-container');
+            let message = document.createElement('DIV');
+            let content = document.createTextNode('Looks like you\'re done Tripn!');
+            message.appendChild(content);
+            container.appendChild(message);
         }
     }
     return(

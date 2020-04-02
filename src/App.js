@@ -9,9 +9,6 @@ function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
-    console.log('endpoints from App: ',endPoints);
-    console.log('directions from App: ',directions);
-    console.log('waypointsArr from App: ',waypointsArr);
 
     useEffect(() => {
         const fetchDirections = async () => {
@@ -19,14 +16,12 @@ function App() {
             const startingLocation = `&origin=${endPoints[0]}`;
             const endingLocation = `&destination=${endPoints[1]}`;
             const apiKey = `&key=${process.env.REACT_APP_TRIPN_GMAPS_API_KEY}`;
-            console.log(apiKey);
             const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
             const waypointArr = waypointsArr.map( waypoint => {
                 return ( waypoint=`|${waypoint}` );
             });
             const waypoints = `&waypoints=optimize:true|${waypointArr.join('')}`;
-            console.log("WHAT ARE WAYPOINTS? ", waypoints);
 
             let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}${apiKey}`);
             let restext = await resp.text();
@@ -40,16 +35,14 @@ function App() {
         };
         fetchDirections();
     }, [endPoints, waypointsArr]);
-    console.log('fetchdirections() from App: ',directions);
+    console.log("Fetch directions() Results: ", directions);
 
     const handleEndpointsSubmit = (start, end) => {
         setEndPoints([...endPoints, start, end]);
-        console.log('handleEndpointSubmit() from App: ',endPoints);
     };
 
     const handleWaypointsSubmit = (waypoint) => {
         setWaypointsArr([...waypointsArr, waypoint]);
-        console.log('handleWaypointsSubmit() from App: ',waypointsArr);
     };
 
     const deleteDestination = i => {
