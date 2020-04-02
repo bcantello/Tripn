@@ -49,3 +49,23 @@ nav div {
   margin-top: 5px;
   background-color: #93B344;
 }
+
+@media (min-width: 450px) {
+  .App {
+    margin: 35px auto;
+    max-width: 450px;
+    max-height: 750px;
+  }
+
+  .starting-location-field {
+    width: 375px;
+    height: 2em;
+    margin: 1em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+}

@@ -76,3 +76,10 @@
 .create-new button:hover {
     background: #ddd;
 }
+
+@media (min-width: 450px) {
+    .waypoints-list {
+        width: 360px;
+        margin: 0 auto;
+    }
+}
