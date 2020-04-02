@@ -9,19 +9,17 @@ function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
-    console.log('endpoints from App: ',endPoints);
-    console.log('directions from App: ',directions);
+
     console.log('waypointsArr from App: ',waypointsArr);
 
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const startingLocation = `&origin=${endPoints[0]}`;
     const endingLocation = `&destination=${endPoints[1]}`;
     const apiKey = `&key=${process.env.REACT_APP_TRIPN_GMAPS_API_KEY}`;
-    console.log(apiKey);
     const url = 'https://maps.googleapis.com/maps/api/directions/json?';
 
     const waypointArr = waypointsArr.map( waypoint => {
-        return ( waypoint=`via:${waypoint}|` );
+        return ( waypoint=`optimize:true|via:${waypoint}|` );
     });
     const waypoints = `&waypoints=${waypointArr.join('')}`;
     const apiUrl = `${proxyUrl}${url}${apiKey}${startingLocation}${endingLocation}${waypoints}`;
@@ -44,12 +42,10 @@ function App() {
 
     const handleEndpointsSubmit = (start, end) => {
         setEndPoints([...endPoints, start, end]);
-        console.log('handleEndpointSubmit() from App: ',endPoints);
     };
 
     const handleWaypointsSubmit = (waypoint) => {
         setWaypointsArr([...waypointsArr, waypoint]);
-        console.log('handleWaypointsSubmit() from App: ',waypointsArr);
     };
 
     const deleteDestination = i => {

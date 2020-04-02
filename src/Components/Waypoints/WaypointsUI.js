@@ -3,13 +3,18 @@ import {Link} from "react-router-dom";
 import Waypoints from "./Waypoints";
 import WaypointList from "./WaypointList";
 import {UniversalProps} from "../../App";
-import Map from "../Map";
+import './waypointsStyles.css'
+import MapContainer from "../Map/Map3";
+import MapList from "../Map/MapItems";
 
 export default function WaypointsUI() {
     const universalProps = useContext(UniversalProps);
     return(
-        <div>
-            <Map/>
+        <div id={'waypointUI-container'}>
+            <div id={'map-container'}>
+                {/*<MapContainer/>*/}
+                <MapList/>
+            </div>
             <Waypoints
                 handleWaypointsSubmit={universalProps.handleWaypointsSubmit}
                 setWaypointsArr={universalProps.setWaypointsArr}

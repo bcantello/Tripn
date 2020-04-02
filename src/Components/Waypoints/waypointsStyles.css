@@ -1,0 +1,10 @@
+#waypointUI-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#map-container {
+    width: 90vw;
+    height: 50vh;
+    margin: 0 auto;
+}
