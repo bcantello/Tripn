@@ -23,7 +23,7 @@ function Waypoints(props) {
                     onChange={handleChange}
                     value={input}
                 />
-                <button>Add destination</button>
+                <button>Add</button>
             </form>
         </div>
     );

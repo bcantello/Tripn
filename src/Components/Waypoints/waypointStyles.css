@@ -1,0 +1,81 @@
+#waypoints-headline {
+    font-size: 18px;
+    margin: 20px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.waypoints-list {
+    background: rgba(55,103,123,.8);
+    border-radius: 3px;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.waypoint-item {
+    padding: 10px 0 10px 0;
+    margin: 1px 0 1px 0;
+    border-top: 1px solid #08363b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    /*font-weight: lighter;*/
+    user-select: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actions button {
+    padding: 3px;
+    border-radius: 4px;
+    border: none;
+    background: #333;
+    color: white;
+    /*font-weight: lighter;*/
+    font-size: 16px;
+}
+
+.name {
+    margin-left: 10px;
+}
+
+.actions {
+    margin-right: 10px;
+}
+
+#waypoints-finalize-button {
+    padding: 3px;
+    border-radius: 4px;
+    border: none;
+    background: #333;
+    color: white;
+    /*font-weight: lighter;*/
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.create-new {
+    width: 100%;
+}
+.create-new input {
+    box-sizing: border-box;
+    width: 65%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+}
+.create-new button {
+    width: 15%;
+    background: #C9C3CF;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    margin: 0;
+    border: none;
+    border-left: 1px solid #999;
+}
+
+.create-new button:hover {
+    background: #ddd;
+}

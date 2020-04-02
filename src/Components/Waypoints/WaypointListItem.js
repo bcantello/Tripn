@@ -1,4 +1,5 @@
 import React from "react";
+import './waypointStyles.css'
 
 function WaypointListItem({ waypoint, index, deleteDestination }) {
     return (
