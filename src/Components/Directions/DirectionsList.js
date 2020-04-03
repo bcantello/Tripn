@@ -19,7 +19,6 @@ export default function DirectionsList({directions}) {
     };
 
     const handleCountDecrement = () => {
-
         if (count > 0) {
             setCount(count - 1);
             let tempCount = count - 1;
