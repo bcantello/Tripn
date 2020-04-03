@@ -24,7 +24,6 @@ function App() {
             const waypoints = `&waypoints=optimize:true|${waypointArr.join('')}`;
 
             let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}${apiKey}`);
-            // let resp = await fetch(`${proxyUrl}${url}${startingLocation}${endingLocation}${waypoints}`);
             let restext = await resp.text();
             try {
                 let resJson = JSON.parse(restext);
@@ -52,9 +51,14 @@ function App() {
         setWaypointsArr(newWaypoints);
     };
 
+    const resetState = () => {
+        setWaypointsArr([]);
+        setEndPoints([]);
+    };
+
     return (
         <div className="App">
-            <Header/>
+            <Header reset={resetState}/>
             <div id={'main-content-container'}>
                 <UniversalProps.Provider value={
                     {
