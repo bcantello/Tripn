@@ -9,9 +9,11 @@ export default function DirectionsListItem(props) {
     }
 
     let direction = strip(props['element']['html_instructions']);
+    let distance = props['element'].distance.text;
     return (
         <div className="directions-item">
-            {direction}
+            <span className={'direction-element'}>{direction}</span>
+            <span className={'distance-element'}>{distance}</span>
         </div>
     );
 }

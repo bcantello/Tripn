@@ -12,13 +12,13 @@
 }
 
 .waypoint-item {
-    padding: 10px 0 10px 0;
+    padding: 8px 0;
     margin: 1px 0 1px 0;
     border-top: 1px solid #08363b;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     color: white;
     user-select: none;
     text-decoration: none;
@@ -31,7 +31,7 @@
     border: none;
     background: #333;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .name {
@@ -58,7 +58,7 @@
 .create-new input {
     box-sizing: border-box;
     width: 65%;
-    padding: 10px;
+    padding: 8px;
     font-size: 16px;
     border: none;
 }
@@ -66,7 +66,7 @@
     width: 15%;
     background: #C9C3CF;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 8px;
     font-size: 16px;
     margin: 0;
     border: none;
