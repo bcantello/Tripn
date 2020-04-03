@@ -22,6 +22,11 @@
     padding-right: 5px;
 }
 
+.distance-time-element {
+    font-family: 'Indie Flower', cursive;
+    margin: -5px 0 10px 0;
+}
+
 .directions-list {
     overflow: scroll;
     max-height: 60vh;
