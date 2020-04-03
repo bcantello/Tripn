@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tripn
+
+Tripn is a Roadtrip planning application that takes the work out of planning a route so that you can focus on the places you want to see.
+After entering your origin and your destination, add any additional destinations that you would like to stop at during the trip.
+Once the trip is finalized, Tripn will optimize your route and compile individual turn by turn directions for each destination.
+
+[Click here](https://bcantello.github.io/Tripn/) to start Tripn!
+
+#### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
