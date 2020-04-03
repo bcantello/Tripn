@@ -50,6 +50,30 @@ nav div {
   background-color: #93B344;
 }
 
+#about-tagline {
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#about-content-container {
+  height: 500px;
+  width: 400px;
+  margin: 0 auto;
+  overflow: scroll;
+  background-color: rgba(226, 226, 226, 0.68);
+  border-radius: 10px;
+}
+
+.about-content {
+  padding: 0 15px;
+  line-height: 1.5em;
+}
+
+.about-image {
+  width: 300px;
+}
+
 @media (min-width: 450px) {
   .App {
     margin: 35px auto;
