@@ -1,11 +1,31 @@
 .directions-item {
-    background-color: rgba(212, 212, 212, 0.78);
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(230, 230, 230, 0.78);
     padding: .45em 0;
 }
+
+.destination-element {
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.direction-element {
+    text-align: left;
+    padding-left: 5px;
+    max-width: 70vw;
+}
+
+.distance-element {
+    text-align: right;
+    padding-right: 5px;
+}
+
 .directions-list {
     overflow: scroll;
-    height: 60vh;
-    width: 90vw;
+    max-height: 60vh;
+    max-width: 90vw;
     margin: 0 auto;
     border-radius: 10px;
 }
@@ -17,7 +37,7 @@
     background: #333;
     color: white;
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #end-directions-placeholder {
@@ -27,8 +47,11 @@
 
 @media (min-width: 450px) {
     .directions-list {
-        height: 450px;
+        max-height: 450px;
         width: 405px;
         box-sizing: content-box;
+    }
+    .direction-element {
+        max-width: 315px;
     }
 }
