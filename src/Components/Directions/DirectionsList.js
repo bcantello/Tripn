@@ -4,8 +4,8 @@ import './directionsStyles.css'
 
 export default function DirectionsList({directions}) {
     let directionsListArr = this;
-    const [count, setCount] = useState(0);
     let destination = this;
+    const [count, setCount] = useState(0);
     const container = document.getElementById('end-directions-placeholder');
 
     const handleCountIncrement = () => {

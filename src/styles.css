@@ -57,8 +57,8 @@ nav div {
 }
 
 #about-content-container {
-  height: 500px;
-  width: 400px;
+  height: 70vh;
+  width: 90vw;
   margin: 0 auto;
   overflow: scroll;
   background-color: rgba(226, 226, 226, 0.68);
@@ -82,8 +82,8 @@ nav div {
   }
 
   .starting-location-field {
-    width: 375px;
-    height: 2em;
+    width: 300px;
+    height: 2.2em;
     margin: 1em;
   }
 
@@ -92,4 +92,8 @@ nav div {
     height: 0;
   }
 
+  #about-content-container {
+    height: 500px;
+    width: 400px;
+  }
 }

@@ -35,7 +35,6 @@ function App() {
         };
         fetchDirections();
     }, [endPoints, waypointsArr]);
-    console.log("Fetch directions() Results: ", directions);
 
     const handleEndpointsSubmit = (start, end) => {
         setEndPoints([...endPoints, start, end]);

@@ -7,18 +7,18 @@
 .waypoints-list {
     background: rgba(55,103,123,.8);
     border-radius: 3px;
-    width: 80vw;
+    width: 75vw;
     margin: 0 auto;
 }
 
 .waypoint-item {
-    padding: 8px 0;
+    padding: 7px 0;
     margin: 1px 0 1px 0;
     border-top: 1px solid #08363b;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 15px;
     color: white;
     user-select: none;
     text-decoration: none;
@@ -57,18 +57,18 @@
 }
 .create-new input {
     box-sizing: border-box;
-    width: 65%;
-    padding: 8px;
-    font-size: 16px;
+    width: 60%;
+    padding: 7px;
+    font-size: 15px;
     border: none;
 }
 .create-new button {
     width: 15%;
     background: #C9C3CF;
     box-sizing: border-box;
-    padding: 8px;
-    font-size: 16px;
-    margin: 0;
+    padding: 7px;
+    font-size: 15px;
+    /*margin: 0;*/
     border: none;
     border-left: 1px solid #999;
 }
