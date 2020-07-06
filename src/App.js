@@ -9,6 +9,9 @@ function App() {
     const [endPoints, setEndPoints] = useState([]);
     const [directions, setDirections] = useState({});
     const [waypointsArr, setWaypointsArr] = useState([]);
+    console.log("endpoints from app",endPoints);
+    console.log("waypointsArr from app",waypointsArr)
+    console.log("directions from app",directions)
 
     useEffect(() => {
         const fetchDirections = async () => {

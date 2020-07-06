@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import '../styles.css'
 
 export default function Header(props) {
-    return(
+    return (
         <nav>
             <Link to={'/'} style={{textDecoration: 'none'}}>
                 <div><span id={'logo'} onClick={props.reset}>Tripn</span></div>
@@ -15,5 +15,5 @@ export default function Header(props) {
                 <div>About</div>
             </Link>
         </nav>
-    )
+    );
 };
